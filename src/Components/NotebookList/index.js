@@ -1,31 +1,25 @@
-import React, { useState } from "react";
-import { observer } from "mobx-react";
+import { Title } from "./styles";
 
-//components
+import React, { useState } from "react";
+import notebookStore from "../../store/NotebookStore";
+import NotebookItem from "./NotebookItem";
+import { observer } from "mobx-react";
 import SearchBar from "../SearchBar";
 import AddButton from "../buttons/AddButton";
-import notebooks from "../../notebooks";
-import NotebookItem from "./NotebookItem";
-
-//store
-// import notebookStore from "../../store/notebookStore";
-
-// styles
-import { Title, ListWrapper } from "./styles";
 
 const NotebookList = () => {
   const [query, setQuery] = useState("");
 
-  const notebookList = notebooks.map((notebook) => (
-    <NotebookItem notebook={notebook} key={notebook.id} />
-  ));
-
+  const notebookList = notebookStore.notebooks
+    .filter((notebook) =>
+      notebook.name.toLowerCase().includes(query.toLowerCase())
+    )
+    .map((notebook) => <NotebookItem notebook={notebook} key={notebook.id} />);
   return (
     <div className="container">
-      <Title>NoteBooks</Title>
+      <Title> Notebook</Title>
       <SearchBar setQuery={setQuery} />
-      <ListWrapper>{notebookList}</ListWrapper>
-
+      {notebookList}
       <AddButton />
     </div>
   );

@@ -1,16 +1,18 @@
 import { decorate, observable } from "mobx";
 import axios from "axios";
-import notebooks from "../notebooks";
 class NotebookStore {
-  _notebooks = notebooks;
+  // _notebooks = notebooks;
+  notebooks = [];
+  loading = true;
 
   fetchNotebooks = async () => {
-    // try {
-    //   const response = await axios.get("http://localhost:8000/notebooks");
-    //   this.notebooks = response.data;
-    // } catch (error) {
-    //   console.error("NotebookStore -> fetchNotebooks -> error", error);
-    // }
+    try {
+      const response = await axios.get("http://localhost:8000/notebooks");
+      this.notebooks = response.data;
+      this.loading = false;
+    } catch (error) {
+      console.error("NotebookStore -> fetchNotebooks -> error", error);
+    }
   };
 
   createNotebook = async (newNotebook) => {
@@ -18,7 +20,7 @@ class NotebookStore {
       const formData = new FormData();
       for (const key in newNotebook) formData.append(key, newNotebook[key]);
       const res = await axios.post("http://localhost:8000/notebooks", formData);
-      this.notebooks.push(res.data);
+      this.notebooks.push({ ...res.data, notes: [] });
     } catch (error) {
       console.log("NotebookStore -> fetchNotebooks -> error", error);
     }
@@ -26,7 +28,7 @@ class NotebookStore {
 
   updateNotebook = async (updatedNotebook) => {
     try {
-      const formData = new formData();
+      const formData = new FormData();
       for (const key in updatedNotebook)
         formData.append(key, updatedNotebook[key]);
       await axios.put(
@@ -54,7 +56,7 @@ class NotebookStore {
   };
 }
 
-decorate(NotebookStore, { notebooks: observable });
+decorate(NotebookStore, { notebooks: observable, loading: observable });
 
 const notebookStore = new NotebookStore();
 notebookStore.fetchNotebooks();

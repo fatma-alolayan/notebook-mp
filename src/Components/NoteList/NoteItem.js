@@ -1,24 +1,18 @@
 import React from "react";
+import { NoteWrapper } from "./styles";
+import DeleteButton from "../buttons/DeleteButton";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
-
-//components
-// import UpdateButton from "../buttons/UpdateButton";
-// import DeleteButton from "../buttons/DeleteButton";
-
-// styles
-import { NoteWrapper } from "./styles";
+import UpdateButton from "../buttons/UpdateButton";
 
 const NoteItem = ({ note }) => {
   return (
     <NoteWrapper>
-      <Link to={`/notebook/${note.slug}`}>
-        <p>{note.title}</p>
+      <Link to={`/notes/${note.slug}`}>
+        <p> {note.description}</p>
       </Link>
-      <p>{note.body}</p>
-
-      {/* <UpdateButton notebook={notebook} />
-      <DeleteButton notebookId={notebookId} /> */}
+      <UpdateButton note={note} />
+      <DeleteButton noteId={note.id} />
     </NoteWrapper>
   );
 };

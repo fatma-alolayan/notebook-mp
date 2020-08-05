@@ -3,7 +3,7 @@ import Modal from "react-modal";
 //styles
 import { CreateButtonStyled } from "./styles";
 // store
-import noteStore from "../../store/noteStore";
+import noteStore from "../../store/NoteStore";
 
 const customStyle = {
   content: {
@@ -46,7 +46,7 @@ const NoteModal = ({ notebook, isOpen, closeModal, oldNote }) => {
       <form onSubmit={handleSubmit}>
         <div className="form-group row">
           <div className="col-6">
-            <label>Name</label>
+            <label>Note Title</label>
             <input
               required
               name="name"
@@ -56,7 +56,17 @@ const NoteModal = ({ notebook, isOpen, closeModal, oldNote }) => {
               value={note.name}
             />
           </div>
+          <label>Note </label>
+          <input
+            required
+            name="description"
+            type="text"
+            onChange={handleChange}
+            className="form-control"
+            value={note.description}
+          />
         </div>
+
         <CreateButtonStyled className="btn float-right" type="submit">
           {oldNote ? "Update" : "Create"}
         </CreateButtonStyled>

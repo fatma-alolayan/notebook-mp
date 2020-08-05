@@ -3,11 +3,13 @@ import axios from "axios";
 
 class NoteStore {
   notes = [];
+  loading = true;
 
   fetchNotes = async () => {
     try {
       const response = await axios.get("http://localhost:8000/notes");
       this.notes = response.data;
+      this.loading = false;
     } catch (error) {
       console.error("Notestore -> fetchNotes -> error", error);
     }
@@ -23,7 +25,7 @@ class NoteStore {
       );
       const note = res.data;
       this.notes.push(note);
-      notebook.notes.push({ id: note.id });
+      notebook.notes.push(note);
     } catch (error) {
       console.log("Notestore -> fetchNotes -> error", error);
     }
@@ -44,6 +46,8 @@ class NoteStore {
     }
   };
 
+  getNoteById = (noteId) => this.notes.find((note) => note.id === noteId);
+
   deleteNote = async (noteId) => {
     try {
       await axios.delete(`http://localhost:8000/notes/${noteId}`);
@@ -54,7 +58,7 @@ class NoteStore {
   };
 }
 
-decorate(NoteStore, { notes: observable });
+decorate(NoteStore, { notes: observable, loading: observable });
 
 const noteStore = new NoteStore();
 noteStore.fetchNotes();

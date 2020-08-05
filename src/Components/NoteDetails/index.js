@@ -1,46 +1,36 @@
 import React from "react";
-import notes from "../../notes";
-import { useParams, Redirect } from "react-router-dom";
-import { observer } from "mobx-react";
-
-//components
-// import List from "../List";
-// import AddButton from "../buttons/AddButton";
-// import UpdateButton from "../buttons/UpdateButton";
-// import DeleteButton from "../buttons/DeleteButton";
-
-// //style
 import { DetailWrapper, ListWrapper } from "./styles";
-
-// //store
-import noteStore from "../../store/noteStore";
-import notebookStore from "../../store/notebookStore";
-import NoteList from "../NoteList";
+import { observer } from "mobx-react";
+import { Link, Redirect, useParams } from "react-router-dom";
+import { Card } from "react-bootstrap";
+import DeleteButton from "../buttons/DeleteButton";
+import UpdateButton from "../buttons/UpdateButton";
+import noteStore from "../../store/NoteStore";
 
 const NoteDetails = () => {
   const { noteSlug } = useParams();
-
   const note = noteStore.notes.find((note) => note.slug === noteSlug);
-
-  if (!note) return <Redirect to="/Notebook" />;
-
-  // const notes = notebook.notes
-  //   .map((note) => noteStore.getItemById(note.id))
-  // .filter((note) => note);
-
+  if (!note) return <Redirect to="/notes" />;
   return (
-    <>
-      <ListWrapper>
-        <DetailWrapper>
-          <h1>{note.name}</h1>
-          <p>{note.title}</p>
-          <p>{note.body}</p>
+    <DetailWrapper>
+      <Link to="/notes">
+        <p>Back to notes</p>
+      </Link>
 
-          {/* <UpdateButton note={note} />
-          <DeleteButton noteId={noteId} /> */}
-        </DetailWrapper>
+      <ListWrapper>
+        <Card style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Title style={{ color: "pink" }}>
+              {note.description}
+            </Card.Title>
+            <Card.Text>
+              <DeleteButton noteId={note.id} />
+              <UpdateButton note={note} />
+            </Card.Text>
+          </Card.Body>
+        </Card>
       </ListWrapper>
-    </>
+    </DetailWrapper>
   );
 };
 
