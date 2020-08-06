@@ -8,17 +8,16 @@ import SearchBar from "../SearchBar";
 import AddButton from "../buttons/AddButton";
 
 const NotebookList = () => {
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
 
-  const notebookList = notebookStore.notebooks
-    .filter((notebook) =>
-      notebook.tag.toLowerCase().includes(query.toLowerCase())
-    )
-    .map((notebook) => <NotebookItem notebook={notebook} key={notebook.id} />);
+  const notebookList = notebookStore.notebooks.map((notebook) => (
+    <NotebookItem notebook={notebook} key={notebook.id} />
+  ));
+
   return (
     <div className="container">
       <Title> Notebook</Title>
-      <SearchBar setQuery={setQuery} />
+      {/* <SearchBar setQuery={setQuery} /> */}
       {notebookList}
       <AddButton />
     </div>

@@ -20,6 +20,7 @@ const NoteModal = ({ notebook, isOpen, closeModal, oldNote }) => {
   const [note, setNote] = useState(
     oldNote ?? {
       name: "",
+      tag: "",
     }
   );
 
@@ -64,6 +65,17 @@ const NoteModal = ({ notebook, isOpen, closeModal, oldNote }) => {
             onChange={handleChange}
             className="form-control"
             value={note.description}
+          />
+
+          <div />
+          <label>Tag</label>
+          <input
+            required
+            name="tag"
+            type="text"
+            onChange={handleChange}
+            className="form-control"
+            value={note.tag}
           />
         </div>
 
