@@ -19,6 +19,7 @@ const NotebookModal = ({ isOpen, closeModal, oldNotebook }) => {
   const [notebook, setNotebook] = useState(
     oldNotebook ?? {
       name: "",
+      tag: "",
     }
   );
 
@@ -60,7 +61,19 @@ const NotebookModal = ({ isOpen, closeModal, oldNotebook }) => {
               value={notebook.name}
             />
           </div>
+          <div>
+            <label>Tag</label>
+            <input
+              required
+              name="tag"
+              type="text"
+              onChange={handleChange}
+              className="form-control"
+              value={notebook.tag}
+            />
+          </div>
         </div>
+
         <CreateButtonStyled className="btn float-right" type="submit">
           {oldNotebook ? "Update" : "Create"}
         </CreateButtonStyled>

@@ -32,8 +32,6 @@ const NotebookDetails = () => {
       <div className="contaier">
         <DetailWrapper className="col-12">
           <h4>{notebook.name}</h4>
-          {/* // */}
-          {/* <h4>{notebook.description}</h4> */}
           <UpdateButton notebook={notebook} />
           <DeleteButton notebookId={notebook.id} />
         </DetailWrapper>

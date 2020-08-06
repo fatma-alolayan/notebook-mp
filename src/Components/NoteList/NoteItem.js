@@ -9,7 +9,7 @@ const NoteItem = ({ note }) => {
   return (
     <NoteWrapper>
       <Link to={`/notes/${note.slug}`}>
-        <p> {note.description}</p>
+        <p> {note.name}</p>
       </Link>
       <UpdateButton note={note} />
       <DeleteButton noteId={note.id} />

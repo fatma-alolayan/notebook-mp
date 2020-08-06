@@ -12,7 +12,7 @@ const NotebookList = () => {
 
   const notebookList = notebookStore.notebooks
     .filter((notebook) =>
-      notebook.name.toLowerCase().includes(query.toLowerCase())
+      notebook.tag.toLowerCase().includes(query.toLowerCase())
     )
     .map((notebook) => <NotebookItem notebook={notebook} key={notebook.id} />);
   return (
