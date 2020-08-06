@@ -3,7 +3,7 @@ import Modal from "react-modal";
 //styles
 import { CreateButtonStyled } from "./styles";
 // store
-import noteStore from "../../store/NoteStore";
+import tagStore from "../../store/TagStore";
 
 const customStyle = {
   content: {
@@ -16,24 +16,22 @@ const customStyle = {
   },
 };
 
-const NoteModal = ({ notebook, isOpen, closeModal, oldNote }) => {
-  const [note, setNote] = useState(
-    oldNote ?? {
-      name: "",
+const TagModal = ({ note, isOpen, closeModal, oldTag }) => {
+  const [note, setTag] = useState(
+    oldTag ?? {
       tag: "",
-      description: "",
     }
   );
 
   const handleChange = (event) => {
-    const newNote = { ...note, [event.target.name]: event.target.value };
-    setNote(newNote);
+    const newTag = { ...tag, [event.target.name]: event.target.value };
+    setTag(newTag);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    noteStore[oldNote ? "updateNote" : "createNote"](note, notebook);
+    tagStore[oldTag ? "updateTag" : "createTag"](note, tag);
 
     closeModal();
   };
@@ -43,49 +41,29 @@ const NoteModal = ({ notebook, isOpen, closeModal, oldNote }) => {
       isOpen={isOpen}
       closeModal={closeModal}
       style={customStyle}
-      contentLabel="Note Modal"
+      contentLabel="Tag Modal"
     >
       <form onSubmit={handleSubmit}>
         <div className="form-group row">
           <div className="col-6">
-            <label>Note Title</label>
+            <label>Tag</label>
             <input
               required
               name="name"
               type="text"
               onChange={handleChange}
               className="form-control"
-              value={note.name}
+              value={tag.tag}
             />
           </div>
-          <label>Note </label>
-          <input
-            required
-            name="description"
-            type="text"
-            onChange={handleChange}
-            className="form-control"
-            value={note.description}
-          />
-
-          <div />
-          <label>Tag</label>
-          <input
-            required
-            name="tag"
-            type="text"
-            onChange={handleChange}
-            className="form-control"
-            value={note.tag}
-          />
         </div>
 
         <CreateButtonStyled className="btn float-right" type="submit">
-          {oldNote ? "Update" : "Create"}
+          {oldTag ? "Update" : "Create"}
         </CreateButtonStyled>
       </form>
     </Modal>
   );
 };
 
-export default NoteModal;
+export default TagModal;

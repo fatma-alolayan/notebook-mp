@@ -3,7 +3,7 @@ import { ListWrapper } from "./styles";
 import React, { useState } from "react";
 import SearchBar from "../SearchBar";
 import { observer } from "mobx-react";
-import AddButton from "../buttons/AddButton";
+
 const NoteList = ({ notes = [] }) => {
   const [query, setQuery] = useState("");
   const noteList = notes
@@ -14,7 +14,7 @@ const NoteList = ({ notes = [] }) => {
     <div className="container">
       <SearchBar setQuery={setQuery} />
       <ListWrapper className="row">{noteList}</ListWrapper>
-      <AddButton />
+      {/* <AddButton /> */}
     </div>
   );
 };

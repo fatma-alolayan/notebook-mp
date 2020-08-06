@@ -10,6 +10,7 @@ import NotebookList from "../NotebookList";
 import noteStore from "../../store/NoteStore";
 import NoteList from "../NoteList";
 import NoteDetails from "../NoteDetails";
+import notebookStore from "../../store/NotebookStore";
 
 const Routes = () => {
   return (
@@ -19,7 +20,7 @@ const Routes = () => {
           <NotebookDetails />
         </Route>
         <Route path="/notebooks">
-          <NotebookList />
+          <NotebookList notebook={notebookStore.notebook} />
         </Route>
         <Route path="/notes/:noteSlug">
           <NoteDetails />

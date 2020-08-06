@@ -3,8 +3,6 @@ import { useParams, Redirect } from "react-router-dom";
 import { observer } from "mobx-react";
 
 import AddButton from "../buttons/AddButton";
-import UpdateButton from "../buttons/UpdateButton";
-import DeleteButton from "../buttons/DeleteButton";
 
 // //style
 import { DetailWrapper } from "./styles";
@@ -15,16 +13,16 @@ import notebookStore from "../../store/NotebookStore";
 import NoteList from "../NoteList";
 
 const NotebookDetails = () => {
-  const { notbookSlug } = useParams();
+  const { notebookSlug } = useParams();
 
   const notebook = notebookStore.notebooks.find(
-    (_notebook) => _notebook.slug === notbookSlug
+    (_notebook) => _notebook.slug === notebookSlug
   );
 
   if (!notebook) return <Redirect to="/notebooks" />;
 
   const notes = notebook.notes
-    .map((note) => noteStore.getItemById(note.id))
+    .map((note) => noteStore.getNoteById(note.id))
     .filter((note) => note);
 
   return (
@@ -32,8 +30,8 @@ const NotebookDetails = () => {
       <div className="contaier">
         <DetailWrapper className="col-12">
           <h4>{notebook.name}</h4>
-          <UpdateButton notebook={notebook} />
-          <DeleteButton notebookId={notebook.id} />
+          {/* <UpdateButton notebook={notebook} />
+          <DeleteButton notebookId={notebook.id} /> */}
         </DetailWrapper>
       </div>
       <div className="col-12">
