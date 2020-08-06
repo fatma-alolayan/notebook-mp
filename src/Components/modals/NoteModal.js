@@ -3,7 +3,7 @@ import Modal from "react-modal";
 //styles
 import { CreateButtonStyled } from "./styles";
 // store
-import noteStore from "../../store/NoteStore";
+import noteStore from "../../store/noteStore";
 
 const customStyle = {
   content: {

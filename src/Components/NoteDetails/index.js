@@ -5,7 +5,7 @@ import { Link, Redirect, useParams } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import DeleteButton from "../buttons/DeleteButton";
 import UpdateButton from "../buttons/UpdateButton";
-import noteStore from "../../store/NoteStore";
+import noteStore from "../../store/noteStore";
 
 const NoteDetails = () => {
   const { noteSlug } = useParams();

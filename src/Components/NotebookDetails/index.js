@@ -7,8 +7,8 @@ import AddButton from "../buttons/AddButton";
 // //style
 import { DetailWrapper } from "./styles";
 
-import noteStore from "../../store/NoteStore";
-import notebookStore from "../../store/NotebookStore";
+import noteStore from "../../store/noteStore";
+import notebookStore from "../../store/notebookStore";
 
 import NoteList from "../NoteList";
 

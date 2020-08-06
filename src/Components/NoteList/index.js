@@ -7,7 +7,7 @@ import { observer } from "mobx-react";
 const NoteList = ({ notes = [] }) => {
   const [query, setQuery] = useState("");
   const noteList = notes
-    .filter((note) => note.tag.toLowerCase().includes(query.toLowerCase()))
+    .filter((note) => note.name.toLowerCase().includes(query.toLowerCase()))
     .map((note) => <NoteItem note={note} key={note.id} />);
 
   return (

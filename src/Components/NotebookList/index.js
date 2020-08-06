@@ -1,7 +1,7 @@
 import { Title } from "./styles";
 
 import React from "react";
-import notebookStore from "../../store/NotebookStore";
+import notebookStore from "../../store/notebookStore";
 import NotebookItem from "./NotebookItem";
 import { observer } from "mobx-react";
 import AddButton from "../buttons/AddButton";

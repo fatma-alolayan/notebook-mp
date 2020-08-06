@@ -7,10 +7,10 @@ import { observer } from "mobx-react";
 import Home from "../../Home";
 import NotebookDetails from "../NotebookDetails";
 import NotebookList from "../NotebookList";
-import noteStore from "../../store/NoteStore";
+import noteStore from "../../store/noteStore";
 import NoteList from "../NoteList";
 import NoteDetails from "../NoteDetails";
-import notebookStore from "../../store/NotebookStore";
+import notebookStore from "../../store/notebookStore";
 
 const Routes = () => {
   return (

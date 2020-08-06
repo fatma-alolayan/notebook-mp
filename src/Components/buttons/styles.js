@@ -37,3 +37,16 @@ export const UpdateButtonStyled = styled.button`
 
   border-radius: 20px;
 `;
+
+export const AddButtonStyled = styled.button`
+  margin: 0.5em;
+  item-align: center;
+  padding: 0.5em;
+  border: 1px solid green;
+  color: white;
+  background-color: green;
+  font-size: 10px;
+  border-radius: 20px;
+  width: 60px;
+  height: 30px;
+`;

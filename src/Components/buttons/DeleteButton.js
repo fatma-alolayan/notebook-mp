@@ -2,8 +2,8 @@ import React from "react";
 import { observer } from "mobx-react";
 
 // store
-import noteStore from "../../store/NoteStore";
-import notebookStore from "../../store/NotebookStore";
+import noteStore from "../../store/noteStore";
+import notebookStore from "../../store/notebookStore";
 
 // styles
 import { DeleteButtonStyled } from "./styles";

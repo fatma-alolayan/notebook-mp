@@ -3,7 +3,7 @@ import Modal from "react-modal";
 //styles
 import { CreateButtonStyled } from "./styles";
 // store
-import notebookStore from "../../store/NotebookStore";
+import notebookStore from "../../store/notebookStore";
 const customStyle = {
   content: {
     top: "50%",

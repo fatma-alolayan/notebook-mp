@@ -7,8 +7,8 @@ import Routes from "./Components/Routes";
 
 //styles
 import { GlobalStyle } from "./styles";
-import notebookStore from "./store/NotebookStore";
-import noteStore from "./store/NoteStore";
+import notebookStore from "./store/notebookStore";
+import noteStore from "./store/noteStore";
 
 function App() {
   return (

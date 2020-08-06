@@ -29,7 +29,7 @@ export const NotebookWrapper = styled.div`
   background-color: white;
   font-size: 20px;
   font-color: black;
-  width: 25%;
+  width: 20%;
 `;
 export const DetailWrapper = styled.div`
   text-align: center;
